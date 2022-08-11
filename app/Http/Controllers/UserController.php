@@ -18,4 +18,8 @@ class UserController extends Controller
     {
         return view('index', compact('user'));
     }
+
+    public function appendUserComments(){
+        
+    }
 }
