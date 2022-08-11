@@ -39,11 +39,10 @@ class UserController extends Controller
         }
 
         $user = User::find($validated['id']);
-
+        
         if ($user) {
             $user->comments .= "\n" . $validated['comments'];
             $user->save();
-
             return response($user);
         }
         return response('No such user ', 404);
