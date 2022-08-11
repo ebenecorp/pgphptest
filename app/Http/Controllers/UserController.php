@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    //
-    public function getUserComments($id){
-
-        $user = User::findOrFail($id);
-
+    /**
+     * Get comments of User from Database by User's ID.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    // a
+    public function getUserComments(User $user)
+    {
         return view('index', compact('user'));
-        
     }
-
 }
