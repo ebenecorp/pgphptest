@@ -29,11 +29,33 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 1. GET http://baseURL/:ID 
 
-  Required  PARAM = ID
+  Required  PARAM : ID
   Response: HTML file
+  Errors: 402 Status code for request with invalid or unavailable ID 
   
  This is a get request that receives the ID of user's comment you wish to view and returns a html file containing user's name, image and comments.
 
-2. POST http://baseURL/api/comments 
+2. POST http://baseURL/api/comments
 
-This is a POST request which receives either 
+Required Parameters: id, comments, password
+
+sample JSON payload: 
+                    {
+                        "comments": "TEST COMMENTS",
+                        "id": 1,
+                        "password":"STATIC PASSWORD"
+                    }
+                    
+response: Json Object of updated user data from the database 
+
+This is a POST request which receives "password", "id" and "comments" as either Json array or Form fields request content type and appends the comments to the existing comment for the user with the specified id in the request.
+
+
+## Commands
+
+You can also append new comments to user's comments  by providing the user's ID and comment using the Artisan command below
+
+###"php artisan user:saveComment ID COMMENT"
+
+
+
