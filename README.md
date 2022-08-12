@@ -39,7 +39,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 Required Parameters: id, comments, password
 
-sample JSON payload: 
+### sample JSON payload: 
                     {
                         "comments": "TEST COMMENTS",
                         "id": 1,
@@ -56,6 +56,42 @@ This is a POST request which receives "password", "id" and "comments" as either 
 You can also append new comments to user's comments  by providing the user's ID and comment using the Artisan command below
 
 ### `php artisan user:saveComment ID COMMENT`
+
+where "ID" is the user identifier and "COMMENT" is some amount of comments, placed in double qoutes when with spaces. No password is required for this execution.
+
+
+## Project Setup
+
+
+## Getting started
+
+Assuming you've already installed on your machine: PHP (>= 8.0.0), [Laravel](https://laravel.com), [Composer](https://getcomposer.org) and [Node.js](https://nodejs.org).
+
+``` bash
+# install dependencies
+composer install
+npm install
+
+# create .env file and generate the application key (ensure you update the .env with required database and related credentials)
+cp .env.example .env
+php artisan key:generate
+
+
+# create migration and add sample data to the db (this current creates two sample data into the DB): 
+
+
+# Run migrations and seed file
+php artisan migrate --seed
+
+
+
+Then launch the server:
+
+``` bash
+php artisan serve
+```
+
+The sample project is now up and running! Access it at http://localhost:8000.
 
 
 
