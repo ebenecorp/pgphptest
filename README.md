@@ -55,7 +55,7 @@ This is a POST request which receives "password", "id" and "comments" as either 
 
 You can also append new comments to user's comments  by providing the user's ID and comment using the Artisan command below
 
-### "php artisan user:saveComment ID COMMENT"
+### `php artisan user:saveComment ID COMMENT`
 
 
 
