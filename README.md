@@ -1,64 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+ ## <p align="center"> PGPHP Application</a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## About PGPHP Application
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The PGPHP Application is a solution to the Picturesworks assignemnt which entails the migration of a non-OO legacy application into the Laravel/Eloquent frameworkweb application 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## The Requirement
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+ The requirement was to completely port ALL logic, behavior and workflows included in the non-OO legacy application and migrate it to a fresh Laravel application with working data persistency with a database.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Functionality Imported
+
+1. A GET request with URL (baseURL/:ID) with parameters ID which returns the existing styled HTML for a user with id "ID"
+
+2. A POST request with URL (baseURL/api/comments) and form fields "password", "id" and "comments" which appends the value of 'comments' to the existing comments field of user with identifier 'id' provided the 'password' is a given static value.
+
+3. A POST request with URL (baseURL/api/comments) and JSON object containing "password", "id" and "comments" which appends the value of 'comments' to the existing comments field of user with identifier 'id' provided the 'password' is a given static value.
+
+4. A Command line execution  "php artisan user:saveComment" which essentially do the same as (2) above, too, where "ID" is the user identifier and "COMMENTS" is some amount of comments, placed in double qoutes when with spaces. No password is required for this execution.
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Implemented Routes and Parameters
 
-## Contributing
+1. GET http://baseURL/:ID 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+  Required  PARAM : ID
+  Response: HTML file
+  Errors: 402 Status code for request with invalid or unavailable ID 
+  
+ This is a get request that receives the ID of user's comment you wish to view and returns a html file containing user's name, image and comments.
 
-## Code of Conduct
+2. POST http://baseURL/api/comments
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Required Parameters: id, comments, password
 
-## Security Vulnerabilities
+### sample JSON payload: 
+                    {
+                        "comments": "TEST COMMENTS",
+                        "id": 1,
+                        "password":"STATIC PASSWORD"
+                    }
+                    
+response: Json Object of updated user data from the database 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+This is a POST request which receives "password", "id" and "comments" as either Json array or Form fields request content type and appends the comments to the existing comment for the user with the specified id in the request.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Commands
+
+You can also append new comments to user's comments  by providing the user's ID and comment using the Artisan command below
+
+### `php artisan user:saveComment ID COMMENT`
+
+where "ID" is the user identifier and "COMMENT" is some amount of comments, placed in double qoutes when with spaces. No password is required for this execution.
+
+
+## Project Setup
+
+
+## Getting started
+
+Assuming you've already installed on your machine: PHP (>= 8.0.0), [Laravel](https://laravel.com)and [Composer](https://getcomposer.org).
+
+``` bash
+# install dependencies
+composer install
+
+# create .env file and generate the application key (ensure you update the .env with required database and related credentials)
+cp .env.example .env
+php artisan key:generate
+
+
+create migration and add sample data to the db (this current creates two sample data into the DB): 
+
+# Run migrations and seed file
+php artisan migrate --seed
+
+
+
+Then launch the server:
+
+``` bash
+php artisan serve
+```
+
+The sample project is now up and running! Access it at http://localhost:8000.
+
+
+
