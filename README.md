@@ -70,15 +70,13 @@ Assuming you've already installed on your machine: PHP (>= 8.0.0), [Laravel](htt
 ``` bash
 # install dependencies
 composer install
-npm install
 
 # create .env file and generate the application key (ensure you update the .env with required database and related credentials)
 cp .env.example .env
 php artisan key:generate
 
 
-# create migration and add sample data to the db (this current creates two sample data into the DB): 
-
+create migration and add sample data to the db (this current creates two sample data into the DB): 
 
 # Run migrations and seed file
 php artisan migrate --seed
