@@ -65,7 +65,7 @@ where "ID" is the user identifier and "COMMENT" is some amount of comments, plac
 
 ## Getting started
 
-Assuming you've already installed on your machine: PHP (>= 8.0.0), [Laravel](https://laravel.com), [Composer](https://getcomposer.org) and [Node.js](https://nodejs.org).
+Assuming you've already installed on your machine: PHP (>= 8.0.0), [Laravel](https://laravel.com)and [Composer](https://getcomposer.org).
 
 ``` bash
 # install dependencies
